@@ -46,3 +46,9 @@ On Windows use `gradlew.bat` instead of `./gradlew`.
 | `StructureBar.kt` | UI: the two dropdowns, caret syncing and navigation |
 | `StructureBuilder.kt` | Reads the Java file (PSI) and builds the list of classes and members |
 | `StructureBuilderTest.kt` | Tests for building the structure |
+
+## License
+
+Copyright (C) 2026 Riccardo Oliosi
+
+This program is free software: you can redistribute it and/or modify it under the terms of the [GNU General Public License](LICENSE) as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
