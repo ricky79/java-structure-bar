@@ -1,0 +1,19 @@
+<idea-plugin>
+    <id>it.pluginintellij.structurebar</id>
+    <name>Java Structure Bar</name>
+    <vendor>Riccardo Oliosi</vendor>
+
+    <description><![CDATA[
+    Shows a Visual Studio style navigation bar at the top of every Java editor:
+    one dropdown lists the classes in the file (including nested ones), the other
+    lists the fields, constructors and methods of the selected class.
+    Both follow the caret, and choosing an entry jumps to it.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <editorNotificationProvider implementation="it.pluginintellij.structurebar.StructureBarProvider"/>
+    </extensions>
+</idea-plugin>
