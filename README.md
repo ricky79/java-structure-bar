@@ -1,48 +1,48 @@
 # Java Structure Bar
 
-Plugin per IntelliJ IDEA che aggiunge in cima a ogni editor Java una barra di navigazione in stile Visual Studio, con due menu a tendina:
+An IntelliJ IDEA plugin that adds a Visual Studio style navigation bar at the top of every Java editor, with two dropdowns:
 
-- **Classi** — tutte le classi del file, comprese quelle annidate (es. `Outer.Inner`).
-- **Membri** — campi, costruttori, metodi e componenti dei record della classe selezionata, con tipo e firma in grigio (es. `find(String, int) : User`).
+- **Classes**: every class in the file, nested ones included (e.g. `Outer.Inner`).
+- **Members**: fields, constructors, methods and record components of the selected class, with their type and signature in grey (e.g. `find(String, int) : User`).
 
-Entrambi i menu seguono il cursore: spostandoti nel codice si aggiornano sulla classe e sul membro in cui ti trovi. Scegliendo una voce l'editor salta alla sua dichiarazione.
+Both dropdowns follow the caret: as you move through the code they update to the class and member you are in. Choosing an entry jumps the editor to its declaration.
 
-## Caratteristiche
+## Features
 
-- Voci ordinate alfabeticamente, con le icone e la visibilità standard di IntelliJ.
-- Aggiornamento automatico mentre scrivi (con un breve ritardo per non rallentare l'editor).
-- Vengono ignorati i membri non scritti nel sorgente, come i metodi impliciti di enum e record.
-- Funziona anche durante l'indicizzazione.
+- Entries sorted alphabetically, with IntelliJ's standard icons and visibility markers.
+- Updates automatically as you type (with a short delay so the editor stays responsive).
+- Members that are not written in the source, such as implicit enum and record methods, are left out.
+- Works while the IDE is indexing.
 
-## Requisiti
+## Requirements
 
-- IntelliJ IDEA 2026.2 o successivo (build `262+`)
-- Plugin Java incluso nell'IDE
+- IntelliJ IDEA 2026.2 or later (build `262+`)
+- The bundled Java plugin
 
 ## Build
 
-Serve un JDK 25 (Gradle lo usa come toolchain). Il wrapper scarica automaticamente Gradle 9.8.
+You need JDK 25 (Gradle uses it as the toolchain). The wrapper downloads Gradle 9.8 automatically.
 
 ```bash
-./gradlew buildPlugin      # crea lo ZIP del plugin in build/distributions/
-./gradlew runIde           # avvia un IDE di prova con il plugin installato
-./gradlew test             # esegue i test
-./gradlew verifyPlugin     # verifica la compatibilità con IntelliJ IDEA 2026.2.3
+./gradlew buildPlugin      # builds the plugin ZIP in build/distributions/
+./gradlew runIde           # starts a sandbox IDE with the plugin installed
+./gradlew test             # runs the tests
+./gradlew verifyPlugin     # checks compatibility with IntelliJ IDEA 2026.2.3
 ```
 
-Su Windows usa `gradlew.bat` al posto di `./gradlew`.
+On Windows use `gradlew.bat` instead of `./gradlew`.
 
-## Installazione
+## Installation
 
-1. Esegui `./gradlew buildPlugin`.
-2. In IntelliJ IDEA apri **Settings → Plugins → ⚙ → Install Plugin from Disk…**
-3. Seleziona lo ZIP in `build/distributions/` e riavvia l'IDE.
+1. Run `./gradlew buildPlugin`.
+2. In IntelliJ IDEA open **Settings → Plugins → ⚙ → Install Plugin from Disk…**
+3. Select the ZIP in `build/distributions/` and restart the IDE.
 
-## Struttura del progetto
+## Project structure
 
-| File | Ruolo |
-|------|-------|
-| `StructureBarProvider.kt` | Aggancia la barra agli editor dei file `.java` |
-| `StructureBar.kt` | Interfaccia: i due menu, la sincronizzazione con il cursore e la navigazione |
-| `StructureBuilder.kt` | Legge il file Java (PSI) e costruisce l'elenco di classi e membri |
-| `StructureBuilderTest.kt` | Test della costruzione della struttura |
+| File | Role |
+|------|------|
+| `StructureBarProvider.kt` | Attaches the bar to editors of `.java` files |
+| `StructureBar.kt` | UI: the two dropdowns, caret syncing and navigation |
+| `StructureBuilder.kt` | Reads the Java file (PSI) and builds the list of classes and members |
+| `StructureBuilderTest.kt` | Tests for building the structure |
