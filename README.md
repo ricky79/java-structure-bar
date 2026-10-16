@@ -34,9 +34,13 @@ On Windows use `gradlew.bat` instead of `./gradlew`.
 
 ## Installation
 
-1. Run `./gradlew buildPlugin`.
+1. Download [java-structure-bar.zip](https://github.com/ricky79/java-structure-bar/releases/latest/download/java-structure-bar.zip) from the latest release, or build it yourself with `./gradlew buildPlugin` (it ends up in `build/distributions/`).
 2. In IntelliJ IDEA open **Settings → Plugins → ⚙ → Install Plugin from Disk…**
-3. Select the ZIP in `build/distributions/` and restart the IDE.
+3. Select the ZIP and restart the IDE. Don't extract it first.
+
+## Releases
+
+Every push to `main` builds, tests and verifies the plugin. When the `version` in `build.gradle.kts` has no release yet, GitHub publishes the release `v<version>` with the ZIP attached, so bumping the version is all it takes to ship a new one.
 
 ## Project structure
 
