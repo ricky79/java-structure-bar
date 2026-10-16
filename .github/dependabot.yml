@@ -9,3 +9,8 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    groups:
+      # init and analyze must always run the same version.
+      codeql:
+        patterns:
+          - "github/codeql-action*"
